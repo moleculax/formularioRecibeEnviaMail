@@ -8,6 +8,10 @@
 
 > Automatización que recibe datos desde un formulario web, los almacena en PostgreSQL y Google Sheets simultáneamente, y envía una confirmación por email.
 
+>
+![Captura de pantalla del workflow](https://raw.githubusercontent.com/moleculax/formularioRecibeEnviaMail/main/screen.png)
+>
+
 ## 📋 Tabla de Contenidos
 
 - [Descripción General](#-descripción-general)
@@ -41,7 +45,7 @@ Este workflow de n8n actúa como un backend completo para formularios web. Cuand
 - 🎓 Inscripciones a eventos
 - 🛒 Pedidos simples
 
-## ✨ Características
+## �?Características
 
 | Característica | Descripción |
 |----------------|-------------|
@@ -53,7 +57,7 @@ Este workflow de n8n actúa como un backend completo para formularios web. Cuand
 | **Manejo de errores** | Respuestas claras ante fallos |
 | **Idempotencia** | Evita duplicados por ID único |
 
-## 🏗️ Arquitectura del Workflow
+## 🏗�?Arquitectura del Workflow
 
 ```mermaid
 graph LR
