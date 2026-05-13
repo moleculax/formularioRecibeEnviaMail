@@ -1,4 +1,4 @@
-# ?? Formulario a Base de Datos - n8n Automation
+# ðŸ“ Formulario a Base de Datos - n8n Automation
 
 ![n8n version](https://img.shields.io/badge/n8n-1.0%2B-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
@@ -6,69 +6,51 @@
 ![Gmail](https://img.shields.io/badge/Gmail-API-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-> Automatizaci¨®n que recibe datos desde un formulario web, los almacena en PostgreSQL y Google Sheets simult¨¢neamente, y env¨ªa una confirmaci¨®n por email.
+> AutomatizaciÃ³n que recibe datos desde un formulario web, los almacena en PostgreSQL y Google Sheets simultÃ¡neamente, y envÃ­a una confirmaciÃ³n por email.
 
 ![Captura de pantalla del workflow](https://raw.githubusercontent.com/moleculax/formularioRecibeEnviaMail/main/screen.png)
 
-## ?? Tabla de Contenidos
+## ðŸ“‹ Tabla de Contenidos
 
-- [Descripci¨®n General](#-descripci¨®n-general)
-- [Caracter¨ªsticas](#-caracter¨ªsticas)
+- [DescripciÃ³n General](#-descripciÃ³n-general)
+- [CaracterÃ­sticas](#-caracterÃ­sticas)
 - [Arquitectura del Workflow](#-arquitectura-del-workflow)
 - [Requisitos Previos](#-requisitos-previos)
-- [Instalaci¨®n y Configuraci¨®n](#-instalaci¨®n-y-configuraci¨®n)
+- [InstalaciÃ³n y ConfiguraciÃ³n](#-instalaciÃ³n-y-configuraciÃ³n)
 - [Estructura del Workflow](#-estructura-del-workflow)
 - [Variables de Entorno](#-variables-de-entorno)
 - [API Endpoints](#-api-endpoints)
 - [Formato de Datos](#-formato-de-datos)
-- [Soluci¨®n de Problemas](#-soluci¨®n-de-problemas)
-- [Personalizaci¨®n](#-personalizaci¨®n)
+- [SoluciÃ³n de Problemas](#-soluciÃ³n-de-problemas)
+- [PersonalizaciÃ³n](#-personalizaciÃ³n)
 
-## ?? Descripci¨®n General
+## ðŸŽ¯ DescripciÃ³n General
 
-Este workflow de n8n act¨²a como un backend completo para formularios web. Cuando un usuario env¨ªa un formulario:
+Este workflow de n8n actÃºa como un backend completo para formularios web. Cuando un usuario envÃ­a un formulario:
 
-1. **Recibe los datos** v¨ªa Webhook
-2. **Valida la informaci¨®n** (campos requeridos)
+1. **Recibe los datos** vÃ­a Webhook
+2. **Valida la informaciÃ³n** (campos requeridos)
 3. **Almacena en PostgreSQL** para respaldo estructurado
-4. **Registra en Google Sheets** para f¨¢cil visualizaci¨®n
-5. **Env¨ªa email de confirmaci¨®n** al usuario
+4. **Registra en Google Sheets** para fÃ¡cil visualizaciÃ³n
+5. **EnvÃ­a email de confirmaciÃ³n** al usuario
 6. **Notifica al administrador** (opcional)
 
 ### Casos de uso ideales
 
-- ?? Formularios de contacto
-- ?? Registro de clientes/leads
-- ?? Encuestas y feedback
-- ?? Inscripciones a eventos
-- ?? Pedidos simples
+- ðŸ“‹ Formularios de contacto
+- ðŸ“ Registro de clientes/leads
+- ðŸ“Š Encuestas y feedback
+- ðŸŽ“ Inscripciones a eventos
+- ðŸ›’ Pedidos simples
 
-## ? Caracter¨ªsticas
+## âœ¨ CaracterÃ­sticas
 
-| Caracter¨ªstica | Descripci¨®n |
+| CaracterÃ­stica | DescripciÃ³n |
 |----------------|-------------|
-| **API RESTful** | Endpoint ¨²nico para recibir datos |
+| **API RESTful** | Endpoint Ãºnico para recibir datos |
 | **Almacenamiento dual** | PostgreSQL + Google Sheets |
-| **Confirmaci¨®n autom¨¢tica** | Email al usuario al completar |
-| **Validaci¨®n de datos** | Campos requeridos y tipos |
-| **Logs detallados** | Seguimiento de cada ejecuci¨®n |
+| **ConfirmaciÃ³n automÃ¡tica** | Email al usuario al completar |
+| **ValidaciÃ³n de datos** | Campos requeridos y tipos |
+| **Logs detallados** | Seguimiento de cada ejecuciÃ³n |
 | **Manejo de errores** | Respuestas claras ante fallos |
-| **Idempotencia** | Evita duplicados por ID ¨²nico |
-
-## ??? Arquitectura del Workflow
-
-```mermaid
-graph LR
-    A[Formulario Web] -->|HTTP POST| B[Webhook n8n]
-    B --> C[Validar Datos]
-    C --> D{?Datos v¨¢lidos?}
-    D -->|No| E[Respuesta Error]
-    D -->|S¨ª| F[Insertar PostgreSQL]
-    F --> G[Agregar Google Sheets]
-    G --> H[Email Confirmaci¨®n]
-    H --> I[Email Admin]
-    I --> J[Respuesta ¨¦xito]
-    
-    style A fill:#667eea,color:#fff
-    style J fill:#10b981,color:#fff
-    style E fill:#ef4444,color:#fff
+| **Idempotencia** | Evita duplicados por ID Ãºnico |
