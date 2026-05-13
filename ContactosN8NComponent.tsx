@@ -66,7 +66,7 @@ export default function ContactosN8NComponent() {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('https://pdfhand.app.n8n.cloud/webhook/contactos', {
+            const response = await fetch('https://TU_URL/webhook/contactos', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

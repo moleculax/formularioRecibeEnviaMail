@@ -1,4 +1,4 @@
-# 馃摑 Formulario a Base de Datos - n8n Automation
+# ?? Formulario a Base de Datos - n8n Automation
 
 ![n8n version](https://img.shields.io/badge/n8n-1.0%2B-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
@@ -6,70 +6,68 @@
 ![Gmail](https://img.shields.io/badge/Gmail-API-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-> Automatizaci贸n que recibe datos desde un formulario web, los almacena en PostgreSQL y Google Sheets simult谩neamente, y env铆a una confirmaci贸n por email.
+> Automatización que recibe datos desde un formulario web, los almacena en PostgreSQL y Google Sheets simultáneamente, y envía una confirmación por email.
 
->
 ![Captura de pantalla del workflow](https://raw.githubusercontent.com/moleculax/formularioRecibeEnviaMail/main/screen.png)
->
 
-## 馃搵 Tabla de Contenidos
+## ?? Tabla de Contenidos
 
-- [Descripci贸n General](#-descripci贸n-general)
-- [Caracter铆sticas](#-caracter铆sticas)
+- [Descripción General](#-descripción-general)
+- [Características](#-características)
 - [Arquitectura del Workflow](#-arquitectura-del-workflow)
 - [Requisitos Previos](#-requisitos-previos)
-- [Instalaci贸n y Configuraci贸n](#-instalaci贸n-y-configuraci贸n)
+- [Instalación y Configuración](#-instalación-y-configuración)
 - [Estructura del Workflow](#-estructura-del-workflow)
 - [Variables de Entorno](#-variables-de-entorno)
 - [API Endpoints](#-api-endpoints)
 - [Formato de Datos](#-formato-de-datos)
-- [Soluci贸n de Problemas](#-soluci贸n-de-problemas)
-- [Personalizaci贸n](#-personalizaci贸n)
+- [Solución de Problemas](#-solución-de-problemas)
+- [Personalización](#-personalización)
 
-## 馃幆 Descripci贸n General
+## ?? Descripción General
 
-Este workflow de n8n act煤a como un backend completo para formularios web. Cuando un usuario env铆a un formulario:
+Este workflow de n8n actúa como un backend completo para formularios web. Cuando un usuario envía un formulario:
 
-1. **Recibe los datos** v铆a Webhook
-2. **Valida la informaci贸n** (campos requeridos)
+1. **Recibe los datos** vía Webhook
+2. **Valida la información** (campos requeridos)
 3. **Almacena en PostgreSQL** para respaldo estructurado
-4. **Registra en Google Sheets** para f谩cil visualizaci贸n
-5. **Env铆a email de confirmaci贸n** al usuario
+4. **Registra en Google Sheets** para fácil visualización
+5. **Envía email de confirmación** al usuario
 6. **Notifica al administrador** (opcional)
 
 ### Casos de uso ideales
 
-- 馃搵 Formularios de contacto
-- 馃摑 Registro de clientes/leads
-- 馃搳 Encuestas y feedback
-- 馃帗 Inscripciones a eventos
-- 馃洅 Pedidos simples
+- ?? Formularios de contacto
+- ?? Registro de clientes/leads
+- ?? Encuestas y feedback
+- ?? Inscripciones a eventos
+- ?? Pedidos simples
 
-## 鉁?Caracter铆sticas
+## ? Características
 
-| Caracter铆stica | Descripci贸n |
+| Característica | Descripción |
 |----------------|-------------|
-| **API RESTful** | Endpoint 煤nico para recibir datos |
+| **API RESTful** | Endpoint único para recibir datos |
 | **Almacenamiento dual** | PostgreSQL + Google Sheets |
-| **Confirmaci贸n autom谩tica** | Email al usuario al completar |
-| **Validaci贸n de datos** | Campos requeridos y tipos |
-| **Logs detallados** | Seguimiento de cada ejecuci贸n |
+| **Confirmación automática** | Email al usuario al completar |
+| **Validación de datos** | Campos requeridos y tipos |
+| **Logs detallados** | Seguimiento de cada ejecución |
 | **Manejo de errores** | Respuestas claras ante fallos |
-| **Idempotencia** | Evita duplicados por ID 煤nico |
+| **Idempotencia** | Evita duplicados por ID único |
 
-## 馃彈锔?Arquitectura del Workflow
+## ??? Arquitectura del Workflow
 
 ```mermaid
 graph LR
     A[Formulario Web] -->|HTTP POST| B[Webhook n8n]
     B --> C[Validar Datos]
-    C --> D{驴Datos v谩lidos?}
+    C --> D{?Datos válidos?}
     D -->|No| E[Respuesta Error]
-    D -->|S铆| F[Insertar PostgreSQL]
+    D -->|Sí| F[Insertar PostgreSQL]
     F --> G[Agregar Google Sheets]
-    G --> H[Email Confirmaci贸n]
+    G --> H[Email Confirmación]
     H --> I[Email Admin]
-    I --> J[Respuesta 脡xito]
+    I --> J[Respuesta éxito]
     
     style A fill:#667eea,color:#fff
     style J fill:#10b981,color:#fff
